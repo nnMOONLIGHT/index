@@ -1,5 +1,5 @@
-```html
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -22,9 +22,7 @@
     --wrong-dim: #4a2a2a;
     --gold: var(--coral);
   }
-
   *{ box-sizing: border-box; }
-
   html, body{
     margin:0; padding:0;
     background: var(--bg);
@@ -32,7 +30,6 @@
     font-family: 'IBM Plex Mono', monospace;
     min-height: 100vh;
   }
-
   body{
     display:flex;
     justify-content:center;
@@ -40,7 +37,6 @@
     position: relative;
     overflow-x:hidden;
   }
-
   body::before{
     content:"";
     position: fixed; inset:0;
@@ -52,302 +48,254 @@
     pointer-events:none;
   }
 
-  .wrap{
-    width:100%;
-    max-width: 640px;
-    position:relative;
-    z-index:1;
-  }
+.wrap{ width:100%; max-width: 640px; position; z-index:1; }
 
-  header{ margin-bottom: 34px; }
+header{ margin-bottom: 34px; }
+.eyebrow{
+font-family:'Space Grotesk', sans-serif;
+font-size: 13px;
+color: var(--accent);
+letter-spacing: 0.02em;
+margin: 0 0 10px;
+}
+h1{
+font-family:'Space Grotesk', sans-serif;
+font-weight:700;
+font-size: 34px;
+line-height:1.15;
+margin:0 0 12px;
+letter-spacing: -0.01em;
+}
+.lead{
+color: var(--muted);
+font-size: 14.5px;
+line-height:1.6;
+max-width: 52ch;
+}
 
-  .eyebrow{
-    font-family:'Space Grotesk', sans-serif;
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.02em;
-    margin: 0 0 10px;
-  }
+.progress{
+display; align-items; gap:10px;
+margin: 26px 0 8px;
+}
+.progress-track{
+flex:1; height:6px; border-radius:3px;
+background: var(--panel-hi);
+overflow;
+}
+.progress-fill{
+height:100%; width:0%;
+background: linear-gradient(90deg, var(--accent), var(--coral));
+transition: width .5s cubic-bezier(.4,0,.2,1);
+}
+.progress-count{
+font-size: 13px; color: var(--muted); white-space;
+}
 
-  h1{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size: 34px;
-    line-height:1.15;
-    margin:0 0 12px;
-    letter-spacing: -0.01em;
-  }
+.clue{
+background: var(--panel);
+border: 1px solid var(--line);
+border-radius: 10px;
+padding: 22px 22px 20px;
+margin-bottom: 16px;
+transition: border-color .3s ease, background .3s ease;
+}
+.clue.solved{
+border-color: var(--accent-dim);
+background: linear-gradient(180deg, rgba(32,74,242,0.09), rgba(255,107,91,0.03));
+}
+.clue-num{
+font-family:'Space Grotesk', sans-serif;
+font-size: 12px;
+color: var(--muted);
+margin-bottom: 8px;
+}
+.clue-text{
+font-family:'Space Grotesk', sans-serif;
+font-size: 15.5px;
+line-height:1.5;
+color: var(--text);
+margin-bottom: 16px;
+}
 
-  .lead{
-    color: var(--muted);
-    font-size: 14.5px;
-    line-height:1.6;
-    max-width: 52ch;
-  }
+.boxes{
+display;
+gap: 6px;
+margin-bottom: 14px;
+flex-wrap: wrap;
+}
+.box{
+width: 30px; height: 38px;
+border: 1.5px solid var(--line);
+border-radius: 6px;
+display; align-items; justify-content;
+font-family:'Space Grotesk', sans-serif;
+font-weight:600;
+font-size: 16px;
+color: var(--text);
+background: var(--panel-hi);
+text-transform: uppercase;
+transition: background .35s ease, border-color .35s ease, transform .35s ease;
+}
+.box.filled{
+background: var(--accent);
+border-color: var(--accent);
+color: #ffffff;
+transform: translateY(-2px);
+}
+.clue.shake .boxes{ animation: shake .4s ease; }
+@keyframes shake{
+0%,100%{ transform: translateX(0); }
+20%{ transform: translateX(-6px); }
+40%{ transform: translateX(6px); }
+60%{ transform: translateX(-4px); }
+80%{ transform: translateX(4px); }
+}
 
-  .progress{
-    display:flex; align-items:center; gap:10px;
-    margin: 26px 0 8px;
-  }
+.answer-row{
+display; gap:10px;
+}
+input.answer{
+flex:1;
+background: var(--bg);
+border: 1.5px solid var(--line);
+border-radius: 8px;
+padding: 10px 14px;
+color: var(--text);
+font-family:'IBM Plex Mono', monospace;
+font-size: 14.5px;
+outline;
+transition: border-color .2s ease;
+}
+input.answer{ border-color: var(--accent); }
+input.answer{
+color: var(--accent);
+border-color: var(--accent-dim);
+opacity: .8;
+}
+input.answer.wrong{ border-color: var(--wrong); }
 
-  .progress-track{
-    flex:1; height:6px; border-radius:3px;
-    background: var(--panel-hi);
-    overflow:hidden;
-  }
+button.check{
+background: var(--accent);
+color: #ffffff;
+border;
+border-radius: 8px;
+padding: 0 20px;
+font-family:'Space Grotesk', sans-serif;
+font-weight:600;
+font-size: 14px;
+cursor;
+transition: filter .15s ease, transform .1s ease;
+}
+button.check{ filter: brightness(1.08); }
+button.check{ transform: scale(0.97); }
+button.check{
+background: var(--panel-hi);
+color: var(--muted);
+cursor;
+}
 
-  .progress-fill{
-    height:100%; width:0%;
-    background: linear-gradient(90deg, var(--accent), var(--coral));
-    transition: width .5s cubic-bezier(.4,0,.2,1);
-  }
+.hint-row{
+margin-top: 8px;
+font-size: 12.5px;
+color: var(--muted);
+min-height: 16px;
+}
+.hint-row.wrong{ color: var(--wrong); }
+.hint-row.right{ color: var(--accent); }
 
-  .progress-count{
-    font-size: 13px; color: var(--muted); white-space:nowrap;
-  }
+/* Toast */
+.toast{
+position: fixed;
+top: 22px; left:50%;
+transform: translate(-50%, -140%);
+background: var(--panel-hi);
+border: 1.5px solid var(--accent);
+color: var(--text);
+padding: 12px 22px;
+border-radius: 999px;
+font-family:'Space Grotesk', sans-serif;
+font-weight:600;
+font-size: 14.5px;
+display; align-items; gap:10px;
+box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+transition: transform .45s cubic-bezier(.34,1.56,.64,1);
+z-index: 50;
+white-space: nowrap;
+}
+.toast.show{ transform: translate(-50%, 0%); }
+.toast .hand{ font-size: 18px; }
 
-  .clue{
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 22px 22px 20px;
-    margin-bottom: 16px;
-    transition: border-color .3s ease, background .3s ease;
-  }
+/* Overlay */
+.overlay{
+position: fixed; inset:0;
+background: rgba(5,7,10,0.86);
+backdrop-filter: blur(3px);
+display; align-items; justify-content;
+opacity:0; pointer-events;
+transition: opacity .5s ease;
+z-index: 100;
+padding: 20px;
+}
+.overlay.show{ opacity:1; pointer-events; }
+.overlay-card{
+background: var(--panel);
+border: 1px solid var(--accent-dim);
+border-radius: 14px;
+padding: 40px 34px;
+max-width: 460px;
+width:100%;
+text-align;
+transform: scale(.92) translateY(10px);
+transition: transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.overlay.show .overlay-card{ transform: scale(1) translateY(0); }
+.overlay-eyebrow{
+font-family:'Space Grotesk', sans-serif;
+color: var(--accent);
+font-size: 13px;
+margin-bottom: 14px;
+}
+.overlay-card h2{
+font-family:'Space Grotesk', sans-serif;
+font-size: 26px;
+margin: 0 0 18px;
+}
+.secret{
+font-family:'Space Grotesk', sans-serif;
+font-weight:700;
+font-size: 30px;
+letter-spacing: 0.04em;
+color: var(--gold);
+margin: 0 0 20px;
+line-height:1.3;
+}
+.overlay-card p.desc{
+color: var(--muted);
+font-size: 14px;
+line-height:1.6;
+margin: 0 0 24px;
+}
+.overlay-card button{
+background: transparent;
+border: 1.5px solid var(--line);
+color: var(--text);
+padding: 10px 22px;
+border-radius: 8px;
+font-family:'Space Grotesk', sans-serif;
+font-size: 14px;
+cursor;
+}
+.overlay-card button{ border-color: var(--accent); color: var(--accent); }
 
-  .clue.solved{
-    border-color: var(--accent-dim);
-    background: linear-gradient(180deg, rgba(32,74,242,0.09), rgba(255,107,91,0.03));
-  }
-
-  .clue-num{
-    font-family:'Space Grotesk', sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-
-  .clue-text{
-    font-family:'Space Grotesk', sans-serif;
-    font-size: 15.5px;
-    line-height:1.5;
-    color: var(--text);
-    margin-bottom: 16px;
-  }
-
-  .boxes{
-    display:flex;
-    gap: 6px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-  }
-
-  .box{
-    width: 30px; height: 38px;
-    border: 1.5px solid var(--line);
-    border-radius: 6px;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    font-size: 16px;
-    color: var(--text);
-    background: var(--panel-hi);
-    text-transform: uppercase;
-    transition: background .35s ease, border-color .35s ease, transform .35s ease;
-  }
-
-  .box.filled{
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #ffffff;
-    transform: translateY(-2px);
-  }
-
-  .clue.shake .boxes{ animation: shake .4s ease; }
-
-  @keyframes shake{
-    0%,100%{ transform: translateX(0); }
-    20%{ transform: translateX(-6px); }
-    40%{ transform: translateX(6px); }
-    60%{ transform: translateX(-4px); }
-    80%{ transform: translateX(4px); }
-  }
-
-  .answer-row{
-    display:flex; gap:10px;
-  }
-
-  input.answer{
-    flex:1;
-    min-width:0;
-    background: var(--bg);
-    border: 1.5px solid var(--line);
-    border-radius: 8px;
-    padding: 10px 14px;
-    color: var(--text);
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 14.5px;
-    outline:none;
-    transition: border-color .2s ease;
-  }
-
-  input.answer:focus{ border-color: var(--accent); }
-
-  input.answer:disabled{
-    color: var(--accent);
-    border-color: var(--accent-dim);
-    opacity: .8;
-  }
-
-  input.answer.wrong{ border-color: var(--wrong); }
-
-  button.check{
-    background: var(--accent);
-    color: #ffffff;
-    border:none;
-    border-radius: 8px;
-    padding: 0 20px;
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    font-size: 14px;
-    cursor:pointer;
-    transition: filter .15s ease, transform .1s ease;
-  }
-
-  button.check:hover{ filter: brightness(1.08); }
-
-  button.check:active{ transform: scale(0.97); }
-
-  button.check:disabled{
-    background: var(--panel-hi);
-    color: var(--muted);
-    cursor:default;
-  }
-
-  .hint-row{
-    margin-top: 8px;
-    font-size: 12.5px;
-    color: var(--muted);
-    min-height: 16px;
-  }
-
-  .hint-row.wrong{ color: var(--wrong); }
-  .hint-row.right{ color: var(--accent); }
-
-  /* Toast */
-  .toast{
-    position: fixed;
-    top: 22px; left:50%;
-    transform: translate(-50%, -140%);
-    background: var(--panel-hi);
-    border: 1.5px solid var(--accent);
-    color: var(--text);
-    padding: 12px 22px;
-    border-radius: 999px;
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:600;
-    font-size: 14.5px;
-    display:flex; align-items:center; gap:10px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    transition: transform .45s cubic-bezier(.34,1.56,.64,1);
-    z-index: 50;
-    white-space: nowrap;
-  }
-
-  .toast.show{ transform: translate(-50%, 0%); }
-  .toast .hand{ font-size: 18px; }
-
-  /* Overlay */
-  .overlay{
-    position: fixed; inset:0;
-    background: rgba(5,7,10,0.86);
-    backdrop-filter: blur(3px);
-    display:flex; align-items:center; justify-content:center;
-    opacity:0; pointer-events:none;
-    transition: opacity .5s ease;
-    z-index: 100;
-    padding: 20px;
-  }
-
-  .overlay.show{
-    opacity:1;
-    pointer-events:auto;
-  }
-
-  .overlay-card{
-    background: var(--panel);
-    border: 1px solid var(--accent-dim);
-    border-radius: 14px;
-    padding: 40px 34px;
-    max-width: 460px;
-    width:100%;
-    text-align:center;
-    transform: scale(.92) translateY(10px);
-    transition: transform .5s cubic-bezier(.34,1.56,.64,1);
-  }
-
-  .overlay.show .overlay-card{
-    transform: scale(1) translateY(0);
-  }
-
-  .overlay-eyebrow{
-    font-family:'Space Grotesk', sans-serif;
-    color: var(--accent);
-    font-size: 13px;
-    margin-bottom: 14px;
-  }
-
-  .overlay-card h2{
-    font-family:'Space Grotesk', sans-serif;
-    font-size: 26px;
-    margin: 0 0 18px;
-  }
-
-  .secret{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700;
-    font-size: 30px;
-    letter-spacing: 0.04em;
-    color: var(--gold);
-    margin: 0 0 20px;
-    line-height:1.3;
-  }
-
-  .overlay-card p.desc{
-    color: var(--muted);
-    font-size: 14px;
-    line-height:1.6;
-    margin: 0 0 24px;
-  }
-
-  .overlay-card button{
-    background: transparent;
-    border: 1.5px solid var(--line);
-    color: var(--text);
-    padding: 10px 22px;
-    border-radius: 8px;
-    font-family:'Space Grotesk', sans-serif;
-    font-size: 14px;
-    cursor:pointer;
-  }
-
-  .overlay-card button:hover{
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation: none !important; transition: none !important; }
-  }
+@media (prefers-reduced-motion: reduce){
+*{ animation: none !important; transition: none !important; }
+}
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="toast" id="toast">
-  <span class="hand">✋</span>
-  <span id="toastText">Верно! Подними руку</span>
-</div>
+<div class="toast" id="toast"><span class="hand">✋</span><span id="toastText">Верно! Подними руку</span></div>
 
 <div class="overlay" id="overlay">
   <div class="overlay-card">
@@ -366,9 +314,7 @@
   </header>
 
   <div class="progress">
-    <div class="progress-track">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     <div class="progress-count" id="progressCount">0 / 5</div>
   </div>
 
@@ -437,14 +383,12 @@ function buildClue(q, index){
   const boxes = document.createElement('div');
   boxes.className = 'boxes';
   const boxEls = [];
-
   for(let i=0; i<q.answer.length; i++){
     const b = document.createElement('div');
     b.className = 'box';
     boxes.appendChild(b);
     boxEls.push(b);
   }
-
   card.appendChild(boxes);
 
   const row = document.createElement('div');
@@ -472,56 +416,43 @@ function buildClue(q, index){
 
   function submit(){
     if(solved) return;
-
     const val = normalize(input.value);
     if(val.length === 0) return;
 
     if(val === normalize(q.answer)){
       solved = true;
       card.classList.add('solved');
-
       const letters = q.answer.toUpperCase().split('');
-
       boxEls.forEach((b, i) => {
         setTimeout(() => {
           b.textContent = letters[i];
           b.classList.add('filled');
         }, i * 45);
       });
-
       input.value = q.answer;
       input.disabled = true;
       btn.disabled = true;
-
       hint.textContent = 'Верно!';
       hint.className = 'hint-row right';
-
       showToast('Верно! Подними руку ✋');
-
       solvedCount++;
       updateProgress();
-
     } else {
       input.value = '';
       input.classList.add('wrong');
-
       card.classList.remove('shake');
       void card.offsetWidth;
       card.classList.add('shake');
-
       hint.textContent = 'Неверно, попробуй ещё раз';
       hint.className = 'hint-row wrong';
-
       setTimeout(() => input.classList.remove('wrong'), 400);
     }
   }
 
   btn.addEventListener('click', submit);
-
   input.addEventListener('keydown', (e) => {
     if(e.key === 'Enter') submit();
   });
-
   input.addEventListener('input', () => {
     if(hint.classList.contains('wrong')){
       hint.textContent = '';
@@ -538,7 +469,6 @@ function updateProgress(){
   const pct = (solvedCount / QUESTIONS.length) * 100;
   progressFill.style.width = pct + '%';
   progressCount.textContent = solvedCount + ' / ' + QUESTIONS.length;
-
   if(solvedCount === QUESTIONS.length){
     setTimeout(() => overlay.classList.add('show'), 500);
   }
@@ -551,4 +481,3 @@ document.getElementById('closeOverlay').addEventListener('click', () => {
 
 </body>
 </html>
-```
