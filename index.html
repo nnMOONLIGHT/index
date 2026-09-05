@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,7 +22,9 @@
     --wrong-dim: #4a2a2a;
     --gold: var(--coral);
   }
+
   *{ box-sizing: border-box; }
+
   html, body{
     margin:0; padding:0;
     background: var(--bg);
@@ -29,6 +32,7 @@
     font-family: 'IBM Plex Mono', monospace;
     min-height: 100vh;
   }
+
   body{
     display:flex;
     justify-content:center;
@@ -36,6 +40,7 @@
     position: relative;
     overflow-x:hidden;
   }
+
   body::before{
     content:"";
     position: fixed; inset:0;
@@ -47,9 +52,15 @@
     pointer-events:none;
   }
 
-  .wrap{ width:100%; max-width: 640px; position:relative; z-index:1; }
+  .wrap{
+    width:100%;
+    max-width: 640px;
+    position:relative;
+    z-index:1;
+  }
 
   header{ margin-bottom: 34px; }
+
   .eyebrow{
     font-family:'Space Grotesk', sans-serif;
     font-size: 13px;
@@ -57,6 +68,7 @@
     letter-spacing: 0.02em;
     margin: 0 0 10px;
   }
+
   h1{
     font-family:'Space Grotesk', sans-serif;
     font-weight:700;
@@ -65,6 +77,7 @@
     margin:0 0 12px;
     letter-spacing: -0.01em;
   }
+
   .lead{
     color: var(--muted);
     font-size: 14.5px;
@@ -76,16 +89,19 @@
     display:flex; align-items:center; gap:10px;
     margin: 26px 0 8px;
   }
+
   .progress-track{
     flex:1; height:6px; border-radius:3px;
     background: var(--panel-hi);
     overflow:hidden;
   }
+
   .progress-fill{
     height:100%; width:0%;
     background: linear-gradient(90deg, var(--accent), var(--coral));
     transition: width .5s cubic-bezier(.4,0,.2,1);
   }
+
   .progress-count{
     font-size: 13px; color: var(--muted); white-space:nowrap;
   }
@@ -98,16 +114,19 @@
     margin-bottom: 16px;
     transition: border-color .3s ease, background .3s ease;
   }
+
   .clue.solved{
     border-color: var(--accent-dim);
     background: linear-gradient(180deg, rgba(32,74,242,0.09), rgba(255,107,91,0.03));
   }
+
   .clue-num{
     font-family:'Space Grotesk', sans-serif;
     font-size: 12px;
     color: var(--muted);
     margin-bottom: 8px;
   }
+
   .clue-text{
     font-family:'Space Grotesk', sans-serif;
     font-size: 15.5px;
@@ -122,6 +141,7 @@
     margin-bottom: 14px;
     flex-wrap: wrap;
   }
+
   .box{
     width: 30px; height: 38px;
     border: 1.5px solid var(--line);
@@ -135,13 +155,16 @@
     text-transform: uppercase;
     transition: background .35s ease, border-color .35s ease, transform .35s ease;
   }
+
   .box.filled{
     background: var(--accent);
     border-color: var(--accent);
     color: #ffffff;
     transform: translateY(-2px);
   }
+
   .clue.shake .boxes{ animation: shake .4s ease; }
+
   @keyframes shake{
     0%,100%{ transform: translateX(0); }
     20%{ transform: translateX(-6px); }
@@ -153,8 +176,10 @@
   .answer-row{
     display:flex; gap:10px;
   }
+
   input.answer{
     flex:1;
+    min-width:0;
     background: var(--bg);
     border: 1.5px solid var(--line);
     border-radius: 8px;
@@ -165,12 +190,15 @@
     outline:none;
     transition: border-color .2s ease;
   }
+
   input.answer:focus{ border-color: var(--accent); }
+
   input.answer:disabled{
     color: var(--accent);
     border-color: var(--accent-dim);
     opacity: .8;
   }
+
   input.answer.wrong{ border-color: var(--wrong); }
 
   button.check{
@@ -185,8 +213,11 @@
     cursor:pointer;
     transition: filter .15s ease, transform .1s ease;
   }
+
   button.check:hover{ filter: brightness(1.08); }
+
   button.check:active{ transform: scale(0.97); }
+
   button.check:disabled{
     background: var(--panel-hi);
     color: var(--muted);
@@ -199,6 +230,7 @@
     color: var(--muted);
     min-height: 16px;
   }
+
   .hint-row.wrong{ color: var(--wrong); }
   .hint-row.right{ color: var(--accent); }
 
@@ -221,6 +253,7 @@
     z-index: 50;
     white-space: nowrap;
   }
+
   .toast.show{ transform: translate(-50%, 0%); }
   .toast .hand{ font-size: 18px; }
 
@@ -235,7 +268,12 @@
     z-index: 100;
     padding: 20px;
   }
-  .overlay.show{ opacity:1; pointer-events:auto; }
+
+  .overlay.show{
+    opacity:1;
+    pointer-events:auto;
+  }
+
   .overlay-card{
     background: var(--panel);
     border: 1px solid var(--accent-dim);
@@ -247,18 +285,24 @@
     transform: scale(.92) translateY(10px);
     transition: transform .5s cubic-bezier(.34,1.56,.64,1);
   }
-  .overlay.show .overlay-card{ transform: scale(1) translateY(0); }
+
+  .overlay.show .overlay-card{
+    transform: scale(1) translateY(0);
+  }
+
   .overlay-eyebrow{
     font-family:'Space Grotesk', sans-serif;
     color: var(--accent);
     font-size: 13px;
     margin-bottom: 14px;
   }
+
   .overlay-card h2{
     font-family:'Space Grotesk', sans-serif;
     font-size: 26px;
     margin: 0 0 18px;
   }
+
   .secret{
     font-family:'Space Grotesk', sans-serif;
     font-weight:700;
@@ -268,12 +312,14 @@
     margin: 0 0 20px;
     line-height:1.3;
   }
+
   .overlay-card p.desc{
     color: var(--muted);
     font-size: 14px;
     line-height:1.6;
     margin: 0 0 24px;
   }
+
   .overlay-card button{
     background: transparent;
     border: 1.5px solid var(--line);
@@ -284,16 +330,24 @@
     font-size: 14px;
     cursor:pointer;
   }
-  .overlay-card button:hover{ border-color: var(--accent); color: var(--accent); }
+
+  .overlay-card button:hover{
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation: none !important; transition: none !important; }
   }
 </style>
 </head>
+
 <body>
 
-<div class="toast" id="toast"><span class="hand">✋</span><span id="toastText">Верно! Подними руку</span></div>
+<div class="toast" id="toast">
+  <span class="hand">✋</span>
+  <span id="toastText">Верно! Подними руку</span>
+</div>
 
 <div class="overlay" id="overlay">
   <div class="overlay-card">
@@ -312,7 +366,9 @@
   </header>
 
   <div class="progress">
-    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
     <div class="progress-count" id="progressCount">0 / 5</div>
   </div>
 
@@ -381,12 +437,14 @@ function buildClue(q, index){
   const boxes = document.createElement('div');
   boxes.className = 'boxes';
   const boxEls = [];
+
   for(let i=0; i<q.answer.length; i++){
     const b = document.createElement('div');
     b.className = 'box';
     boxes.appendChild(b);
     boxEls.push(b);
   }
+
   card.appendChild(boxes);
 
   const row = document.createElement('div');
@@ -414,43 +472,56 @@ function buildClue(q, index){
 
   function submit(){
     if(solved) return;
+
     const val = normalize(input.value);
     if(val.length === 0) return;
 
     if(val === normalize(q.answer)){
       solved = true;
       card.classList.add('solved');
+
       const letters = q.answer.toUpperCase().split('');
+
       boxEls.forEach((b, i) => {
         setTimeout(() => {
           b.textContent = letters[i];
           b.classList.add('filled');
         }, i * 45);
       });
+
       input.value = q.answer;
       input.disabled = true;
       btn.disabled = true;
+
       hint.textContent = 'Верно!';
       hint.className = 'hint-row right';
+
       showToast('Верно! Подними руку ✋');
+
       solvedCount++;
       updateProgress();
+
     } else {
       input.value = '';
       input.classList.add('wrong');
+
       card.classList.remove('shake');
       void card.offsetWidth;
       card.classList.add('shake');
+
       hint.textContent = 'Неверно, попробуй ещё раз';
       hint.className = 'hint-row wrong';
+
       setTimeout(() => input.classList.remove('wrong'), 400);
     }
   }
 
   btn.addEventListener('click', submit);
+
   input.addEventListener('keydown', (e) => {
     if(e.key === 'Enter') submit();
   });
+
   input.addEventListener('input', () => {
     if(hint.classList.contains('wrong')){
       hint.textContent = '';
@@ -467,6 +538,7 @@ function updateProgress(){
   const pct = (solvedCount / QUESTIONS.length) * 100;
   progressFill.style.width = pct + '%';
   progressCount.textContent = solvedCount + ' / ' + QUESTIONS.length;
+
   if(solvedCount === QUESTIONS.length){
     setTimeout(() => overlay.classList.add('show'), 500);
   }
@@ -479,3 +551,4 @@ document.getElementById('closeOverlay').addEventListener('click', () => {
 
 </body>
 </html>
+```
